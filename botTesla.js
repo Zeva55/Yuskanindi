@@ -428,7 +428,7 @@ bot.start(async (ctx) => {
         reply_markup:{
             inline_keyboard:[
                 [{text:'Botu Qrupa Əlavə Edin ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Rəsmi Kanalımız 📣', url:`t.me/Rahid_44`},{text:'Qruplar 💎', callback_data:'vip'}]
+                [{text:'Rəsmi Kanalımız 📣', url:`https://t.me/Crazymmc`},{text:'Qruplar 💎', callback_data:'vip'}]
             ]
         }
     })
