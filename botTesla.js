@@ -145,7 +145,7 @@ const OyunDurdurHusnuEhedov = (ctx, chatId) => {
 		}
 	}
 	else {
-		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat ➡️  /game")
+		ctx.reply("🆘 Oyun başlamadı... 🙅🏻\nOyunu başlat ➡️  /xaosgame")
 	}
 }
 const RaundMesajHusnuEhedov = (chatId, round, time) => {
@@ -264,7 +264,7 @@ const OyunHusnuEhedov = (ctx, chatId) => {
 
 
 
-bot.command("crazygame", (ctx) => {
+bot.command("xaosgame", (ctx) => {
 	let message = ctx.update.message
 	if (message.chat.id < 0) {
 		let chatId = message.chat.id
@@ -394,26 +394,8 @@ bot.command("help", (ctx) => {
           *Əsas əmrlərin siyahısı👇🏻*\n\n🎲 /crazygame - _Oyunu Başlat_\n⛔️ /stop - _Oyunu dayandırmaq_\n📊 /top - _Oyunçuların xalları göstərir_\n_🌍 /g - Global xallar_\nℹ️ /help - _Sizə kömək edəcək_\n👤 /info - _İstifadəçi haqqında məlumat_\n🆔 /id - _Qrup məlumatı_`))
 })
 
-bot.command("info", async (ctx) => {
-    const Id = ctx.message.reply_to_message ? ctx.message.reply_to_message.from.id : ctx.message.from.id;
-    const messageId = ctx.message.reply_to_message ? ctx.message.reply_to_message.message_id : null;
-    const photoInfo = await ctx.telegram.getUserProfilePhotos(Id);
-    const photoId = photoInfo.photos[0]?.[0]?.file_id;
-    const getUserInfo = await ctx.telegram.getChat(Id);
-    const getUser = [getUserInfo].map(kullaniciProfil).join(', ')
-    if (photoId) {
-        return ctx.replyWithPhoto(photoId, { caption: getUser, parse_mode: 'HTML', reply_to_message_id: messageId  })
-    } else {
-        return ctx.replyWithHTML(getUser,  { reply_to_message_id: messageId })
-    }
-});
 
-bot.command('id', async (ctx, next) => {
-	if (ctx.chat.type !== "supergroup") return null;
-    const chatBio = ctx.chat.description
-    await ctx.telegram.sendMessage(ctx.chat.id, `<b>Qrup</b>\n🆔:<code>${ctx.chat.id}</code>\nAd: <code>${ctx.chat.title}</code>`, { parse_mode: 'HTML' }) 
-    return next();
-});
+
 
 
 
