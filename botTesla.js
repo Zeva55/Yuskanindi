@@ -74,10 +74,6 @@ const OyunYaratHusnuEhedov = chatId => {
 	return oyunDurumuHusnuEhedov[chatId]
 }
 
-const ozelMesaj = isGroup => Degisken(`
-    *Salam, Mən təxmin oyun botuyam zamanınızı əyləncəli keçirmək üçün\nməni qrupuna əlavə et🤖*
-    ${isGroup ? "" : "\n*Əsas əmrlərin siyahısı üçün /help*"}
-`)
 
 
 const YasOyunBaslat = () => {  // OYUN RESİM ALMASI GEREK DOSYA KONUM 
@@ -423,76 +419,10 @@ bot.command('id', async (ctx, next) => {
 
 /// /// /// /// /// /// ///  <!-- BOT START MENÜ --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
 
-bot.start(async (ctx) => {
-    await ctx.replyWithMarkdown(ozelMesaj(ctx.update.message.chat.id < 0),{
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin ✅', url:`https://t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Rəsmi Kanalımız 📣', url:`https://t.me/Crazymmc`},{text:'Qruplar 💎', callback_data:'vip'}]
-            ]
-        }
-    })
-})
-
-bot.action('start', ctx=>{
-    ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*Salam,Mən məxmin oyun botuyam, aamanınızı əyləncəli keçirmək üçün\nMəni qrupa əlavə et🤖\n**Əsas əmrlərin siyahısı üçün /help*
-        `,{
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'Botu Qrupa Əlavə Edin ✅', url:`t.me/${process.env.BOT_ISMI}?startgroup=true`}],
-                [{text:'Rəsmi Kanalımız 📣', url:`https://t.me/Crazymmc`},{text:'Qruplar 💎', callback_data:'vip'}]
-            ]
-        }
-    })
-})
 
 
 
-bot.action('vip', ctx=>{
-    ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*🇦🇿 Qruplar*`,{
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'🇦🇿 Qruplar', callback_data:'AZ'}],
-                [{text:'🇦🇿 Digər Qruplar', callback_data:'TR'}],
-                [{text:'🔙 Geri', callback_data:'start'}]
-            ]
-        }
-    })
-})
 
-// AZƏRBAYCAN GRUP DÜYMƏLƏRİ
-bot.action('AZ', ctx=>{
-    ctx.deleteMessage()
-    ctx.replyWithMarkdown(`*🇦🇿 Qruplar*`,{
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'1) Qrup ', url:'https://t.me/CrazyTeam_s'}],
-                [{text:'2) Rəsmi Kanalımız ', url:'https://t.me/Crazymmc'}],
-                [{text:'🔙 Geri', callback_data:'vip'}]
-            ]
-        }
-    })
-})
-
-// TÜRK GRUP DÜYMƏLƏRİ
-bot.action('TR', ctx=>{
-    ctx.deleteMessage()
-    ctx.replyWithMarkdown(`
-*🇦🇿 Digər Qruplar*
-       `,{
-        reply_markup:{
-            inline_keyboard:[
-                [{text:'1) Qrup', url:'https://t.me/CrazyTeam_s'}],
-                [{text:'2) Rəsmi Kanalımız', url:'https://t.me/Crazymmc'}],
-                [{text:'🔙 Geri', callback_data:'vip'}]
-            ]
-        }
-    })
-})
-
-/// /// /// /// /// /// ///  <!-- BOT START MENÜ SON --> /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// 
 
 
 
